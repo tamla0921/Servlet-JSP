@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>회원 인증</title>
+</head>
+
+<body>
+    <form action="logProc" method="post">
+    <!-- form 태그 사이에 입력받은 질의 문자열들을 처리할 서버 프로그램은 action 속성에 지정한 logProc -->
+    <!-- URI를 지정하면서 상대 경로로 지정 -->
+    <!-- 현재 logInOut.html 파일은 /(루트)에 있기 때문에 "/logProc"로 실행 요청. -->
+        ID : <input type="text" name="id"><br>
+        비밀번호 : <input type="password" name="pwd"><br>
+        <input type="submit" value="로그인">
+    </form>
+    
+    <p>
+    
+    <a href="logProc">로그아웃</a>
+</body>
+      
+</html>

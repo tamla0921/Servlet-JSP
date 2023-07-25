@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>edu</display-name>
+    <servlet>
+        <servlet-name>first</servlet-name>
+        <servlet-class>com.edu.test.FirstServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>first</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>addInfo</servlet-name>
+        <servlet-class>com.edu.test.AdditionalInfoServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>addInfo</servlet-name>
+        <url-pattern>/addInfo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>initParam</servlet-name>
+        <servlet-class>com.edu.test.InitParamServlet</servlet-class>
+        <init-param>
+            <param-name>id</param-name>
+            <param-value>guest</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>1004</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>initParam</servlet-name>
+        <url-pattern>/initParamTest</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>servletConfigTest</servlet-name>
+        <servlet-class>com.edu.test.ServletConfigTestServlet</servlet-class>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>servletConfigTest</servlet-name>
+        <url-pattern>/servletConfigTest</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>localTest</servlet-name>
+        <servlet-class>com.edu.test.LocalTestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>localTest</servlet-name>
+        <url-pattern>/local</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>memberTest</servlet-name>
+        <servlet-class>com.edu.test.MemberTestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>memberTest</servlet-name>
+        <url-pattern>/member</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextConfig</param-name>
+        <param-value>/WEB-INF/context.xml</param-value>
+    </context-param>
+    
+    <!--  
+    <filter>
+        <filter-name>flow1</filter-name>
+        <filter-class>com.edu.test.FlowFilterOne</filter-class>
+    </filter>
+    
+    <filter>
+        <filter-name>flow2</filter-name>
+        <filter-class>com.edu.test.FlowFilterTwo</filter-class>
+        <init-param>
+            <param-name>en</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>flow1</filter-name>
+        <url-pattern>/second</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>flow2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+ 
+ <!--     
+    <listener>
+        <listener-class>com.edu.test.TestRequestListener</listener-class>
+    </listener>
+-->
+
+<!-- 
+    <listener>
+        <listener-class>com.edu.test.TestSessionListener</listener-class>
+    </listener>
+    
+    <listener>
+        <listener-class>com.edu.test.TestSessionAttributeListener</listener-class>
+    </listener>
+ -->
+ 
+ <!--  
+    <listener>
+        <listener-class>com.edu.test.TestServletContextListener</listener-class>
+    </listener>
+-->
+
+<error-page>
+    <error-code>405</error-code>
+    <location>/errorHandle</location>
+</error-page>
+
+<error-page>
+    <exception-type>java.lang.NullPointerException</exception-type>
+    <location>/errorHandle</location>
+</error-page>
+
+<error-page>
+    <error-code>404</error-code>
+    <location>/errorHandle</location>
+</error-page>
+
+<resource-ref>
+    <description>Oracle DataSource example</description>
+    <res-ref-name>jdbc/myoracle</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+</resource-ref>
+
+<jsp-config>
+<!-- web.xml 파일에 JSP에 관한 환경설정을 하고자 할 때 사용하는 태그 -->
+    <taglib>
+    <!-- 현재 웹 애플리케이션에서 사용할 커스텀 태그의 설정 파일인 TLD 파일을 등록하는 태그 -->
+        <taglib-uri>http://myTags.com</taglib-uri>
+        <!-- JSP 페이지에서 TLD 파일을 연결하는 정보로서, URL 또는 URI(/WEB-INF/myTag.tld) 형태로 지정. -->
+        <!-- 여기서 지정한 값은 JSP 페이지에서 사용, 여기서 지정된 값은 실제 존재하는 URL, URI가 아닌 개발자가 지정하는 값. -->
+        <!--  uri는 실제 uri(위치정보)가 아니다. 다른 태그 라이브러리와 구별하기 위한 유일한 값을 지정하기 위해 사용하는 이름일 뿐 -->
+        <taglib-location>/WEB-INF/myTag.tld</taglib-location>
+        <!-- 커스텀 태그에 대한 정보가 설정된 TLD 파일의 위치를 지정. -->
+    </taglib>
+</jsp-config>
+</web-app>
